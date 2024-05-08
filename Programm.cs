@@ -1,7 +1,7 @@
 static void Main(string[] args)
 {
     byte day = 8;
-    while(day > 7 ) 
+    while(day > 7 || day < 1 ) 
     {
         Console.Write("Введите день недели от 1 до 7: ");
         day = Convert.ToByte(Console.ReadLine());
