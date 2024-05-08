@@ -23,7 +23,7 @@ private enum Day
 }
 private enum DayTime
 {
-    утро 
+    утро, 
     обед, 
     вечер,
     ночь
