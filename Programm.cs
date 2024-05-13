@@ -1,38 +1,49 @@
-static void Main(string[] args)
-{
-    byte day = 8;
-    while(day > 7 || day < 1 ) 
-    {
-        Console.Write("Введите день недели от 1 до 7: ");
-        day = Convert.ToByte(Console.ReadLine());
-    }
-    Console.Write("Введите время в 24 формате: ");
-    byte dayTime = Convert.ToByte(Console.ReadLine());
+using System;
 
-    Console.WriteLine(getInformation((Day)(day -= 1), dayTime));
-}
-private enum Day
+namespace ConsoleApp
 {
-    понедельник = 0, 
-    вторник, 
-    среда, 
-    четверг, 
-    пятница, 
-    суббота,
-    воскресенье
-}
-private enum DayTime
-{
-    утро, 
-    обед, 
-    вечер,
-    ночь
-}
-static string getInformation(Day day, byte dayTime) 
-{
-    if (dayTime >= 7 && dayTime <= 12) { return $"Сейчас {day}, {DayTime.утро}"; }
-    if (dayTime >= 13 && dayTime <= 18) { return $"Сейчас {day}, {DayTime.обед}"; }
-    if (dayTime >= 19 && dayTime <= 23) { return $"Сейчас {day}, {DayTime.вечер}"; }
-    if (dayTime >= 24) { return "Неверный формат времени"; }
-    return $"Сейчас {day}, {DayTime.ночь}";
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите день недели от 1 до 7: ");
+            byte day = Convert.ToByte(Console.ReadLine());
+            if (day > 7)
+            {
+                Console.WriteLine("Неверный формат дня недели");
+                return;
+            }
+            Console.Write("Введите время в 24 формате: ");
+            byte dayTime = Convert.ToByte(Console.ReadLine());
+
+            
+
+            Console.WriteLine(getInformation((Day)day, dayTime));
+        }
+        enum Day
+        {
+            понедельник,
+            вторник,
+            среда,
+            четверг,
+            пятница,
+            суббота,
+            воскресенье
+        }
+        enum DayTime
+        {
+            утро,
+            обед,
+            вечер,
+            ночь
+        }
+        static string getInformation(Day day, byte dayTime)
+        {
+            if (dayTime >= 7 && dayTime <= 12) { return $"Сейчас {day}, {DayTime.утро}"; }
+            if (dayTime >= 13 && dayTime <= 18) { return $"Сейчас {day}, {DayTime.обед}"; }
+            if (dayTime >= 19 && dayTime <= 23) { return $"Сейчас {day}, {DayTime.вечер}"; }
+            if (dayTime >= 24) { return "Неверный формат даты/времени"; }
+            return $"Сейчас {day}, {DayTime.ночь}";
+        }
+    }
 }
