@@ -8,7 +8,7 @@ namespace ConsoleApp
         {
             Console.Write("Введите день недели от 1 до 7: ");
             byte day = Convert.ToByte(Console.ReadLine());
-            if (day > 7)
+            if (day >= 7)
             {
                 Console.WriteLine("Неверный формат дня недели");
                 return;
